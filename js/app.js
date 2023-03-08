@@ -12,28 +12,28 @@ const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '598a3f24edmshb22f1060189817cp14ae81jsnbf93be7e446c',
-		'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
+		'X-RapidAPI-Host': 'odds.p.rapidapi.com'
 	}
 };
 
-fetch('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=bojack&country=uk', options)
+fetch('https://odds.p.rapidapi.com/v4/sports?all=true', options)
 	.then(response => response.json())
-	.then(response => console.log(response))
+	.then(response => {
+		topMusic = response
+		crearTarjeta()
+	})
 	.catch(err => console.error(err));
 }
 
-//======================================================================================================================//
-
-/*
 const crearTarjeta = () => {
 	topMusic.forEach((artista) => {
-		disco.querySelector('img').setAttribute('src', artista.trackMetadata.displayImageUri)
-		disco.querySelectorAll('p')[0].textContent = artista.trackMetadata.artists[0].name
+		disco.querySelectorAll('p')[0].textContent = artista.title
+		disco.querySelectorAll('p')[1].textContent = artista.description
+		/*
 		disco.querySelectorAll('p')[1].textContent = artista.trackMetadata.trackName[0].name
-
+		*/
 		const clone = disco.cloneNode(true)
 		fragment.appendChild(clone)
 	})
 	cardsMusic.appendChild(fragment)
 }
-*/
